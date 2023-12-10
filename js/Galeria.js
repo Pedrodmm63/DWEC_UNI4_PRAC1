@@ -1,24 +1,26 @@
 export default class Galeria {
 
+    //constructor indicandole la cantidad de imagenes que va a recibir
+    //además de crear un array con las imagenes e implementando que saque imagenes aleatorias
     constructor(cantidad){
         this._nombres = [];
 
-        for(let i = 1; i < cantidad; i++){
+        for(let i = 1; i <= cantidad; i++){
             this._nombres.push('foto' + i + '.jpg'); 
         }
         this._indiceCursor = this.cursorAleatorio();
     }
     
+    //para sacar imagenes aleatorias
     cursorAleatorio(){
         return Math.floor(Math.random() * this._nombres.length);
     }
 
-    //CAMBIAR TODOS PORQUE NO QUIERO EL THIS._NOMBRES SINO EL NUMERO DE INDICE CURSOR
-    cursorUltimo(){
+    cursorUltima(){
         this._indiceCursor = this._nombres.length -1;
         return this._nombres[this._indiceCursor];
     }
-    cursorPimero() {
+    cursorPimera() {
         this._indiceCursor = 0;
         return this._nombres[this._indiceCursor];
     }
