@@ -11,46 +11,54 @@ function cargarPagina() {
 
     //si el indice cursor es igual a 0 deshabilitas los botones primera y anterior
     if(galeria._indiceCursor === 0){
-        document.querySelector('#primera').classList.add('deshabilitado');
-        document.querySelector('#anterior').classList.add('deshabilitado');
+        document.querySelector('#primera').className = 'deshabilitado';
+        document.querySelector('#anterior').className = 'deshabilitado';
     }
 
     //si el indice cursor es igual a la cantidad que le entra por parametro
     //deshabilitas los botones ultima y siguiente
     if(galeria._indiceCursor === cantidad - 1){
-        document.querySelector('#ultima').classList.add('deshabilitado');
-        document.querySelector('#siguiente').classList.add('deshabilitado');
+        document.querySelector('#ultima').className = 'deshabilitado';
+        document.querySelector('#siguiente').className = 'deshabilitado';
     }
 
     //evento para los botones
     document.querySelector('#primera').addEventListener('click', function(){
             imagen(galeria.cursorPimera());
-            document.querySelector('#primera').classList.add('deshabilitado');
-            document.querySelector('#anterior').classList.add('deshabilitado');
-            //corregir dado que no me hace lo que quiero de deshabilitar y habilitar los botones
-            document.querySelector('#ultima').classList.add('habilitado');
-            document.querySelector('#siguiente').classList.add('habilitado');
+            document.querySelector('#primera').className = 'deshabilitado';
+            document.querySelector('#anterior').className = 'deshabilitado';
+
+            document.querySelector('#ultima').className = 'habilitado';
+            document.querySelector('#siguiente').className = 'habilitado';
     })
 
     document.querySelector('#anterior').addEventListener('click', function(){
         if(galeria._indiceCursor !== 0) {
             imagen(galeria.cursorAnterior());
+            document.querySelector('#ultima').className = 'habilitado';
+            document.querySelector('#siguiente').className = 'habilitado';
+        }
+        if(galeria._indiceCursor == 0) {
+            document.querySelector('#primera').className = 'deshabilitado';
+            document.querySelector('#anterior').className = 'deshabilitado';
         }
     })
 
     document.querySelector('#siguiente').addEventListener('click', function(){
         if(galeria._indiceCursor !== cantidad -1) {
             imagen(galeria.cursorSiguiente());
+            document.querySelector('#primera').className = 'habilitado';
+        document.querySelector('#anterior').className = 'habilitado';
         }
     })
 
     document.querySelector('#ultima').addEventListener('click', function(){
         imagen(galeria.cursorUltima());
-        document.querySelector('#ultima').classList.add('deshabilitado');
-        document.querySelector('#siguiente').classList.add('deshabilitado');
-        //corregir dado que no me hace lo que quiero de deshabilitar y habilitar los botones
-        document.querySelector('#primera').classList.add('habilitado');
-        document.querySelector('#anterior').classList.add('habilitado');
+        document.querySelector('#ultima').className = 'deshabilitado';
+        document.querySelector('#siguiente').className = 'deshabilitado';
+
+        document.querySelector('#primera').className = 'habilitado';
+        document.querySelector('#anterior').className = 'habilitado';
     })
 }
 
