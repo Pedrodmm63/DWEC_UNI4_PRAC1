@@ -50,6 +50,10 @@ function cargarPagina() {
             document.querySelector('#primera').className = 'habilitado';
         document.querySelector('#anterior').className = 'habilitado';
         }
+        if(galeria._indiceCursor === cantidad - 1){
+            document.querySelector('#ultima').className = 'deshabilitado';
+            document.querySelector('#siguiente').className = 'deshabilitado';
+        }
     })
 
     document.querySelector('#ultima').addEventListener('click', function(){
